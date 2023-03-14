@@ -3,37 +3,37 @@ import React, { useEffect, useState } from 'react'
 import Cards from './Episodes/Cards'
 
 const Episodes = () => {
-  const [episodes, setEpisodes] = useState()
+  const [eps, setEps] = useState()
   const data = []
-  const infoApi = async() =>{
+  const infoApi = async () => {
     try {
-      const info= await axios.get('https://rickandmortyapi.com/api/episode')
+      const info = await axios.get('https://rickandmortyapi.com/api/episode')
       data.push(...info.data.results)
-       const pages = info.data.pages
-       for(var i= 1; pages > i;i++){
-        var info2= await axios.get(`https://rickandmortyapi.com/api/episode?page=${i+1}`)
+      const pages = info.data.info.pages
+      console.log(pages)
+
+      for (var i = 1; pages > i; i++) {
+        var info2 = await axios.get(`https://rickandmortyapi.com/api/episode?page=${i+1}`)
         data.push(...info2.data.results)
-        console.log(info2)
-       }
-       console.log('data:', data)
-       setEpisodes(data)
+        /* console.log('pasada', info2.data.results) */
+      }
+      /* console.log('data:', data) */
+      setEps(data)
     } catch (error) {
       console.log(error)
-      return(error)
+      return (error)
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     infoApi()
-  },[])
+  }, [])
 
   return (
     <div>
-      {!episodes ?'cargando' : episodes.map((ep)=>{
-        return(
-          <Cards episodes={ep}>
-
-          </Cards>
+      {!eps ? 'cargando' : eps.map((ep) => {
+        return (
+          <Cards episodes={ep}></Cards>
         )
       })}
     </div>
