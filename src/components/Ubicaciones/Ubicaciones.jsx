@@ -1,45 +1,40 @@
-import React, { useEffect, useState } from "react";
-import Card from "./Cards/Card";
-import Navbar from "./Navbar/Navbar";
 import axios from "axios";
-import Card2 from "./Cards/Card2";
+import React, { useEffect, useState } from "react";
+import Navbar from "../Navbar/Navbar";
+import Card from "./Card";
 
-const Characters = () => {
-  const [todos, setTodos] = useState();
+const Ubicaciones = () => {
+  const [location, setLocation] = useState();
   const data = [];
   const infoApi = async () => {
     try {
-      const info = await axios.get(
-        "https://rickandmortyapi.com/api/character"
-      );
+      const info = await axios.get("http://rickandmortyapi.com/api/location");
       data.push(...info.data.results);
-      const pages = await info.data.info.pages;
+      const pages = info.data.info.pages;
+
       for (var i = 1; pages > i; i++) {
         var info2 = await axios.get(
-          `https://rickandmortyapi.com/api/character?page=${i + 1}`
+          `https://rickandmortyapi.com/api/location?page=${i + 1}`
         );
         data.push(...info2.data.results);
-        console.log(info2.data.results);
+        /* console.log('pasada', info2.data.results) */
       }
-      console.log(data);
-      setTodos(data);
+      setLocation(data);
     } catch (error) {
       console.log(error);
       return error;
     }
-    /* setTodos(info.data.results) */
   };
 
   useEffect(() => {
     infoApi();
   }, []);
-  console.log(todos);
+
   return (
     <div>
       <Navbar></Navbar>
-      <div className="flex items-center justify-center  w-[100%]">
-        {!todos ? (
-          ///LOADER
+      <div className="flex justify-center items-center">
+        {!location ? (
           <div class="text-center sm:mt-[15%] mt-[50%]">
             <div role="status">
               <svg
@@ -60,13 +55,13 @@ const Characters = () => {
               </svg>
               <span class="sr-only">Loading...</span>
             </div>
-            <h3 class='text-white font-semibold m-2'>Cargando..</h3>
+            <h3 class="text-white font-semibold m-2">Cargando..</h3>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-6 grid-flow-row gap-2 gap-x-2 mx-2 my-8 text-center">
-            {todos.map((character) => (
-               <Card2 character={character}></Card2> 
-               ))}
+          <div className="w-[90%]">
+            {location.map((loc) => (
+              <Card location={loc}></Card>
+            ))}
           </div>
         )}
       </div>
@@ -74,4 +69,4 @@ const Characters = () => {
   );
 };
 
-export default Characters;
+export default Ubicaciones;
