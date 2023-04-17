@@ -9,14 +9,14 @@ const Characters = () => {
   const data = [];
   const infoApi = async () => {
     try {
-      const info = await axios.get(
+       const info = await axios.get(
         "https://rickandmortyapi.com/api/character"
       );
-      data.push(...info.data.results);
+/*      data.push(...info.data.results); */
       const pages = await info.data.info.pages;
-      for (var i = 1; pages > i; i++) {
+      for (var i = 1; pages >= i; i++) {
         var info2 = await axios.get(
-          `https://rickandmortyapi.com/api/character?page=${i + 1}`
+          `https://rickandmortyapi.com/api/character?page=${i}`
         );
         data.push(...info2.data.results);
         console.log(info2.data.results);
@@ -36,7 +36,7 @@ const Characters = () => {
   console.log(todos);
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar className='z-20'></Navbar>
       <div className="flex items-center justify-center  w-[100%]">
         {!todos ? (
           ///LOADER

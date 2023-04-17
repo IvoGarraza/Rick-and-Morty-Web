@@ -1,18 +1,18 @@
 import React from 'react'
 import {motion} from 'framer-motion'
 
-const Cards = ({episodes}) => {
+const CardsEpisodes = ({capitulos}) => {
   return (
-    <motion.div className='bg-white w-[90%] h-[90%] m-2 p-4 rounded-xl shadow-md ' whileInView={{x:0}} initial={{x:-400}} transition={{duration:0.5}}>
-        <h2 className='font-bold '>{episodes.name}</h2>
-        <div>
+    <motion.div className='bg-white w-[90%] h-[90%] m-2 p-4 rounded-xl shadow-md ' /* whileInView={{x:0}} initial={{x:-400}} transition={{duration:0.5}} */>
+        <h2 className='font-bold '>{capitulos.name}</h2>
+        <p>
           {
-            episodes.episode
+            capitulos.episode
           }
-        </div>
-        <p>Estreno: {episodes.air_date}</p>
+        </p>
+        <p>Estreno: {capitulos.air_date}</p>
     </motion.div>
   )
 }
 
-export default Cards
+export default CardsEpisodes

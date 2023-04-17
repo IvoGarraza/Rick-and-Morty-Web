@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Cards from "./Episodes/Cards";
+import CardsEpisodes from "./Episodes/Cards";
 import Navbar from "./Navbar/Navbar";
 
 const Episodes = () => {
@@ -11,7 +11,6 @@ const Episodes = () => {
       const info = await axios.get("https://rickandmortyapi.com/api/episode");
       data.push(...info.data.results);
       const pages = info.data.info.pages;
-      console.log(pages);
 
       for (var i = 1; pages > i; i++) {
         var info2 = await axios.get(
@@ -38,11 +37,11 @@ const Episodes = () => {
       <div className="m-4 flex items-center justify-center self-center">
         <div className="w-[70%] grid grid-row-4 gap-2 grid-cols-1 items-center justify-center text-center place-items-center">
           {!eps
-            ? (<div class="text-center sm:mt-[15%] mt-[50%]">
+            ? (<div className="text-center sm:mt-[15%] mt-[50%]">
             <div role="status">
               <svg
                 aria-hidden="true"
-                class="inline w-20 h-20 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-green-600 "
+                className="inline w-20 h-20 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-green-600 "
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -56,12 +55,14 @@ const Episodes = () => {
                   fill="currentFill"
                 />
               </svg>
-              <span class="sr-only">Loading...</span>
+              <span className="sr-only">Loading...</span>
             </div>
-            <h3 class='text-white font-semibold m-2'>Cargando..</h3>
+            <h3 className='text-white font-semibold m-2'>Cargando..</h3>
           </div>)
-            : eps.map((ep) => {
-                return <Cards episodes={ep}></Cards>;
+            : 
+             eps.map((ep) => {
+                console.log(ep)
+                return <CardsEpisodes capitulos={ep}></CardsEpisodes>;
               })}
         </div>
       </div>
