@@ -32,8 +32,7 @@ const Episodes = () => {
   }, []);
 
   return (
-    <div>
-      <Navbar></Navbar>
+    <div className="pt-24">
       <div className="m-4 flex items-center justify-center self-center">
         <div className="w-[70%] grid grid-row-4 gap-2 grid-cols-1 items-center justify-center text-center place-items-center">
           {!eps

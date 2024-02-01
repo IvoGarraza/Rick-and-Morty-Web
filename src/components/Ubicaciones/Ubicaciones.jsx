@@ -6,6 +6,7 @@ import Card from "./Card";
 const Ubicaciones = () => {
   const [location, setLocation] = useState();
   const data = [];
+
   const infoApi = async () => {
     try {
       const info = await axios.get("http://rickandmortyapi.com/api/location");
@@ -26,13 +27,14 @@ const Ubicaciones = () => {
     }
   };
 
+
   useEffect(() => {
     infoApi();
+
   }, []);
 
   return (
-    <div>
-      <Navbar></Navbar>
+    <div className="pt-24">
       <div className="flex justify-center items-center">
         {!location ? (
           <div class="text-center sm:mt-[15%] mt-[50%]">

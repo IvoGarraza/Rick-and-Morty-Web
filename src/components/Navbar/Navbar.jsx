@@ -15,14 +15,14 @@ const variants = {
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   return (
-    <div className="bg-slate-600 flex flex-row items-center justify-between w-100 h-20">
-      <div className="flex flex-row">
+    <div className="bg-slate-600 absolute top-0 flex flex-row items-center justify-between w-100 h-20">
+      <Link to='/' className="flex flex-row cursor-pointer">
         <img src={logo} className="w-[12%] sm:w-[5%] m-2"></img>
         <img src={title} className='w-[50%] sm:w-[20%]'></img>
-      </div>
+      </Link>
       <div className="">
         <div className="list-none sm:flex hidden justify-end items-center flex-1">
-          <Link to='/characters' className="bg-gradient-to-b from-[#FAFD7CFF] via-[#fee16a] to-[#E89242FF] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-white"><span className="drop-shadow-md shadow-black text-white font-bold">Personajes</span></Link>
+          <Link to='/characters' className="bg-gradient-to-b from-[#FAFD7CFF] via-[#fee16a] to-[#E89242FF] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-[#02afc5]"><span className="drop-shadow-md shadow-black text-white font-bold">Personajes</span></Link>
           <Link to='/locations' className="bg-gradient-to-b from-[#FAFD7CFF] via-[#fee16a] to-[#E89242FF] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-white"><span className="drop-shadow-md shadow-black text-white font-bold">Ubicaciones</span></Link>
           <Link to='/episodes'  className="bg-gradient-to-b from-[#FAFD7CFF] via-[#fee16a] to-[#E89242FF] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-white"><span className="drop-shadow-md shadow-black text-white font-bold">Episodios</span></Link>
         </div>
@@ -35,7 +35,7 @@ const Navbar = () => {
         <motion.div animate = {toggle?"open":"closed"} variants={variants} transition={{duration:0.5}}
         className={`${toggle ? "flex" : "hidden"} justify-center absolute top-20 right-0 bg-slate-600 p-6 w-[70%] h-[100vh] rounded-lg sidebar border-black`}>
           <div className="flex flex-col w-[90%] mt-10">
-            <Link to='/characters' className="bg-gradient-to-b from-[#FAFD7CFF] via-[#fee16a] to-[#E89242FF] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-white"><span className="drop-shadow-md shadow-black text-white font-bold">Personajes</span></Link>
+            <Link to='/characters' className="bg-[#02afc5] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-white"><span className="drop-shadow-md shadow-black text-white font-bold">Personajes</span></Link>
             <Link to='/locations' className="bg-gradient-to-b from-[#FAFD7CFF] via-[#fee16a] to-[#E89242FF] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-white"><span className="drop-shadow-md shadow-black text-white font-bold">Ubicaciones</span></Link>
             <Link to='/episodes'  className="bg-gradient-to-b from-[#FAFD7CFF] via-[#fee16a] to-[#E89242FF] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-white"><span className="drop-shadow-md shadow-black text-white font-bold">Episodios</span></Link>
           </div>

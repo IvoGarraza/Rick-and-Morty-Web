@@ -35,8 +35,7 @@ const Characters = () => {
   }, []);
   console.log(todos);
   return (
-    <div>
-      <Navbar className='z-20'></Navbar>
+    <div className="pt-24">
       <div className="flex items-center justify-center  w-[100%]">
         {!todos ? (
           ///LOADER
@@ -65,7 +64,7 @@ const Characters = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-6 grid-flow-row gap-2 gap-x-2 mx-2 my-8 text-center">
             {todos.map((character) => (
-               <Card2 character={character}></Card2> 
+               <Card character={character}></Card> 
                ))}
           </div>
         )}
