@@ -101,24 +101,29 @@ const Detail = () => {
         </div>
       ) : (
         <div className="flex flex-col">
-          <div className="relative flex sm:flex-row flex-col items-center justify-around w-full h-[90vh] pt-14">
+          <div className="relative flex sm:flex-row flex-col items-center justify-around w-full h-[90vh] mt-20 bg-slate-400">
             <div className="absolute flex flex-row items-center w-8 top-20 left-4 text-white">
               <Link to="/characters">
                 <ArrowLeftIcon className="w-8"></ArrowLeftIcon>
               </Link>
             </div>
             <img
-              className="sm:w-1/3 w-full rounded-md sm:border-white sm:border-[2px]"
+              className="sm:w-1/3 w-5/6 rounded-md sm:border-white border-black border-[1px] sm:border-[2px]"
               src={personaje.image}
             ></img>
-            <div className="flex flex-col bg-slate-200/30 rounded-md justify-around sm:w-1/3 w-full h-full items-center mt-12 z-10">
-              <div>
-                <h3 className="font-bold text-white text-4xl">
-                  {personaje.name}
-                </h3>
+            <div className="sm:flex absolute left-12 top-4 flex-col rounded-md justify-around sm:w-1/2 w-full h-full items-center sm:mt-12 z-10">
+              <div className="flex flex-row">
+                <div className="bg-yellow-400 z-10 w-16 h-16 flex items-center justify-center font-bold  rounded-full text-3xl border-[1px] border-black">
+                  {personaje.id}
+                </div>
+                <div className=" flex items-center">
+                  <h3 className="font-bold pl-14 -ml-12 bg-slate-600 text-white text-3xl rounded-r-full p-2 pr-6 ">
+                    {personaje.name}
+                  </h3>
+                </div>
               </div>
-              <div className="font-medium text-white flex flex-row items-center w-1/2 bg-slate-400 rounded-full justify-around border-black border-[2px]">
-                Estado:{" "}
+              {/*               <div className="font-medium text-white flex flex-row items-center w-1/2 bg-slate-400 rounded-full justify-around border-black border-[2px]">
+                State:{" "}
                 <div className="flex flex-row-reverse items-center">
                   <div
                     className={`${colorState(
@@ -129,27 +134,27 @@ const Detail = () => {
                 </div>
               </div>
               <div className="bg-slate-400 flex flex-row rounded-full border-black border-[2px] w-1/2 items-center justify-around h-12 text-white font-bold">
-                <span>Genero: </span>
+                <span>Gender: </span>
                 <span className={colorGender(personaje.gender)}>
                   {personaje.gender}
                 </span>
               </div>
-              <div className="flex flex-row items-center justify-around bg-slate-400 w-1/2 text-white border-black border-[2px] rounded-full">
-                <GlobeAltIcon className="fill-white w-16 justify-start flex items-start" />
-                <span className="font-medium flex flex-row">Ubicacion:</span>
+              <div className="flex flex-row items-center justify-around bg-slate-400 w-1/2 text-white border-black border-[2px] px-2 rounded-full">
+                <GlobeAltIcon className="fill-white w-8 justify-start flex items-start" />
+                <span className="font-medium flex flex-row">Location:</span>
                 <span>{personaje.location.name}</span>
               </div>
               <div className="bg-slate-400 rounded-full w-1/2 items-center flex flex-row justify-around text-white font-bold border-black border-[2px] h-12">
-                <span className="text-white">Especie: </span>
+                <span className="text-white">Species: </span>
                 <span>{personaje.species}</span>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="flex flex-col">
             <div>
               <span className="text-white">Episodios en los que aparece</span>
             </div>
-            <div className=" w-full flex flex-col items-center">
+            <div className=" w-full flex flex-col items-center overflow-y-scroll h-44">
               {!episode ? (
                 <div>cargando</div>
               ) : (

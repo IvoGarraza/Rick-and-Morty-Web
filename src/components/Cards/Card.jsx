@@ -31,18 +31,18 @@ const colorGender = (gender) => {
 const Card = ({ character }) => {
   return (
     <div
-      className="flex sm:flex-col flex-row justify-between items-center text-white border-[5px] border-slate border-gray-500 bg-slate-800 shadow-sm shadow-black rounded-xl w-[95%] h-[97%] pb-10"
+      className="group flex sm:flex-col flex-row justify-between items-center text-white border-[5px] border-slate border-gray-500 bg-slate-800 shadow-sm shadow-black rounded-xl w-[95%] h-full pb-2 overflow-hidden"
       onClick={() => <Link to={`/${character.url}`}></Link>}
     >
       <img
         src={character.image}
-        className="sm:w-[100%] w-[30%] sm:rounded-t-xl rounded-full m-2 sm:m-0"
+        className="sm:w-[100%] w-[30%]  sm:group-hover:rounded-b-md sm:rounded-t-none transition-all duration-1000 rounded-full m-2 sm:m-0"
       ></img>
-      <div className="sm:flex hidden sm:w-[2%] w-[10%] sm:h-[5%] h-[8%] absolute text-black bg-yellow-500 border-[1px] border-black items-center justify-center rounded-full font-extrabold mb-[90%] ml-[85%] sm:ml-[13%]">
+      <div className="sm:flex hidden sm:w-8 w-[10%] sm:h-8 h-[8%] absolute text-black bg-yellow-500 border-[1px] border-black items-center justify-center rounded-full font-extrabold mb-[90%] ml-[85%] sm:ml-[13%]">
         <div className="mx-2 rounded-full ">{character.id}</div>
       </div>
       <div className="w-full">
-        <h3 className="font-bold text-xl m-2">{character.name}</h3>
+        <h3 className="font-bold text-xl h-12 w-full flex items-center justify-center">{character.name}</h3>
         <div className="rounded-b  flex flex-col items-center mb-2">
           <div className="flex flex-row items-center justify-around w-full">
             <div className="flex flex-col">
@@ -73,7 +73,9 @@ const Card = ({ character }) => {
           {/*           <div className="bg-green-600 hover:bg-yellow-500 transition-all  p-2 rounded-md ">
             <Link to={`/characters/${character.id}`}>Ver detalle</Link>
           </div> */}
-          <button class="shadow__btn mt-6">Ver detalle</button>
+          <Link to={`/characters/${character.id}`}>
+            <button class="shadow__btn mt-2">Ver detalle</button>
+          </Link>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import wallpaper from "../assets/wallpaper.jpg";
 
 const Home = () => {
   return (
-    <div className=" relative flex flex-col items-center pt-24 justify-around h-[100vh]">
+    <div className=" relative flex flex-col items-center justify-around h-[90vh]">
       <img src={wallpaper} className="absolute -z-10"></img>
       <div className="flex flex-col text-white">
         {/*         <span className="font-bold text-4xl">
@@ -62,7 +62,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
-      <span className="font-light text-xs">Desarrollada por Ivo Garraza</span>
+      <a href="https://ivogarraza.onrender.com/" className="font-light text-xs absolute -bottom-14 rounded-md bg-[#2b9cab] text-white p-2">Desarrollada por Ivo Garraza</a>
     </div>
   );
 };

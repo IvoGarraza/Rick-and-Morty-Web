@@ -62,7 +62,7 @@ const Characters = () => {
             <h3 class='text-white font-semibold m-2'>Cargando..</h3>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-6 grid-flow-row gap-2 gap-x-2 mx-2 my-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-5 grid-flow-row gap-2 gap-x-2 mx-2 my-8 text-center">
             {todos.map((character) => (
                <Card character={character}></Card> 
                ))}

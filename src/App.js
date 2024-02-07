@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import Episodes from './components/Episodes';
@@ -10,9 +10,10 @@ import Detail from './components/Detail/Detail';
 import Navbar from './components/Navbar/Navbar';
 
 function App() {
+  const location = useLocation();
   return (
     <div className="text-center">
-      <Navbar className='z-20'></Navbar>
+      {location.pathname !== '/' && <Navbar className='z-20'></Navbar>}
       <Routes>
         <Route exact path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home/>}></Route>
