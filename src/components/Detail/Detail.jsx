@@ -101,7 +101,7 @@ const Detail = () => {
         </div>
       ) : (
         <div className="flex flex-col">
-          <div className="relative flex sm:flex-row flex-col items-center justify-around w-full h-[90vh] mt-20 bg-slate-400">
+          <div className="relative flex sm:flex-row flex-col items-center justify-around w-full h-[90vh] mt-12 ">
             <div className="absolute flex flex-row items-center w-8 top-20 left-4 text-white">
               <Link to="/characters">
                 <ArrowLeftIcon className="w-8"></ArrowLeftIcon>
@@ -111,7 +111,7 @@ const Detail = () => {
               className="sm:w-1/3 w-5/6 rounded-md sm:border-white border-black border-[1px] sm:border-[2px]"
               src={personaje.image}
             ></img>
-            <div className="sm:flex absolute left-12 top-4 flex-col rounded-md justify-around sm:w-1/2 w-full h-full items-center sm:mt-12 z-10">
+            <div className="sm:flex left-12 top-4 flex-col rounded-md justify-around sm:w-1/2 w-full h-full items-center sm:mt-12 z-10">
               <div className="flex flex-row">
                 <div className="bg-yellow-400 z-10 w-16 h-16 flex items-center justify-center font-bold  rounded-full text-3xl border-[1px] border-black">
                   {personaje.id}
@@ -122,7 +122,16 @@ const Detail = () => {
                   </h3>
                 </div>
               </div>
-              {/*               <div className="font-medium text-white flex flex-row items-center w-1/2 bg-slate-400 rounded-full justify-around border-black border-[2px]">
+              <div>
+                <div className="text-white flex flex-row items-center">
+                  <span>State: </span>
+                  <div className="flex flex-row items-center ml-2">
+                    <span>{personaje.status}</span>
+                    <div className={`w-4 h-4 ml-1 rounded-full border-black border-[1px] ${colorState(personaje.status)}`}></div>
+                  </div>
+                </div>
+              </div>
+              {/*  <div className="font-medium text-white flex flex-row items-center w-1/2 bg-slate-400 rounded-full justify-around border-black border-[2px]">
                 State:{" "}
                 <div className="flex flex-row-reverse items-center">
                   <div

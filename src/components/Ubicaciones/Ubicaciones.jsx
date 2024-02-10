@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Card from "./Card";
+import CardLocation from "../Cards/CardLocation/CardLocation";
 
 const Ubicaciones = () => {
   const [location, setLocation] = useState();
@@ -60,9 +61,9 @@ const Ubicaciones = () => {
             <h3 class="text-white font-semibold m-2">Cargando..</h3>
           </div>
         ) : (
-          <div className="w-[90%]">
+          <div className="w-[90%] grid grid-cols-5 gap-y-8">
             {location.map((loc) => (
-              <Card location={loc}></Card>
+              <CardLocation location={loc}></CardLocation>
             ))}
           </div>
         )}

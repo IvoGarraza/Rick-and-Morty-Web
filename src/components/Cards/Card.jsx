@@ -31,14 +31,14 @@ const colorGender = (gender) => {
 const Card = ({ character }) => {
   return (
     <div
-      className="group flex sm:flex-col flex-row justify-between items-center text-white border-[5px] border-slate border-gray-500 bg-slate-800 shadow-sm shadow-black rounded-xl w-[95%] h-full pb-2 overflow-hidden"
+      className="group flex sm:flex-col flex-row relative justify-between items-center text-white border-[5px] border-slate border-gray-500 bg-slate-800 shadow-sm shadow-black rounded-xl w-[95%] h-full pb-2 overflow-hidden"
       onClick={() => <Link to={`/${character.url}`}></Link>}
     >
       <img
         src={character.image}
         className="sm:w-[100%] w-[30%]  sm:group-hover:rounded-b-md sm:rounded-t-none transition-all duration-1000 rounded-full m-2 sm:m-0"
       ></img>
-      <div className="sm:flex hidden sm:w-8 w-[10%] sm:h-8 h-[8%] absolute text-black bg-yellow-500 border-[1px] border-black items-center justify-center rounded-full font-extrabold mb-[90%] ml-[85%] sm:ml-[13%]">
+      <div className="sm:flex hidden sm:w-8 w-[10%] sm:h-8 h-[8%] absolute text-black bg-yellow-500 border-[1px] border-black items-center justify-center rounded-full font-extrabold top-2 left-2 sm:left-2">
         <div className="mx-2 rounded-full ">{character.id}</div>
       </div>
       <div className="w-full">
