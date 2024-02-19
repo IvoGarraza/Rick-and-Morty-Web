@@ -6,22 +6,31 @@ import Card2 from "./Cards/Card2";
 
 const Characters = () => {
   const [todos, setTodos] = useState();
-  const data = [];
+  const data = useState([])
+  //establece el parámetro de búsqueda a una cadena de texto vacía.
+  const [q, setQ] = useState("");
+  //     set search parameters establece parámetros de búsqueda
+  //     solo queremos buscar países por capital y nombre
+  //     esta lista puede ser más larga si quieres
+  //     hasta puedes buscar países por su número de población
+  // 	  solo tienes que agregarlo al arreglo.
+  const [searchParam] = useState(["name"]);
+  const [filterParam, setFilterParam] = useState(["All"]);
+
   const infoApi = async () => {
     try {
-       const info = await axios.get(
-        "https://rickandmortyapi.com/api/character"
-      );
-/*      data.push(...info.data.results); */
+      const info = await axios.get("https://rickandmortyapi.com/api/character");
+      /*      data.push(...info.data.results); */
       const pages = await info.data.info.pages;
       for (var i = 1; pages >= i; i++) {
         var info2 = await axios.get(
           `https://rickandmortyapi.com/api/character?page=${i}`
         );
         data.push(...info2.data.results);
-        console.log(info2.data.results);
+        /* setData(info2.data.results) */
+        console.log(data, 'itineracion',i);
       }
-      console.log(data);
+      console.log(data, 'fin de funcion');
       setTodos(data);
     } catch (error) {
       console.log(error);
@@ -33,9 +42,58 @@ const Characters = () => {
   useEffect(() => {
     infoApi();
   }, []);
+
+  function search(items) {
+    return items.filter((item) => {
+        return searchParam.some((newItem) => {
+            return (
+                item[newItem]
+                    .toString()
+                    .toLowerCase()
+                    .indexOf(q.toLowerCase()) > -1
+            );
+        });
+    });
+}
+
+
   console.log(todos);
   return (
     <div className="pt-24">
+      <div className="w-full flex flex-row-reverse items-center px-4">
+        <div className="flex flex-row items-center float-right">
+          <span className="text-white">Search:</span>
+          <label htmlFor="Search by name">
+            <input
+              type="search"
+              name="search-form"
+              id="search-form"
+              className="search-input p-2 rounded-md ml-2"
+              placeholder="Search by name"
+              value={q}
+              /*
+              // establece el valor de nuestro parametro q del useState
+              //  cada vez que el usuario tipea en el campo de búsqueda
+              */
+              onChange={(e) => setQ(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className="">
+          <span className="text-white">Status:</span>
+          <select
+            className="p-2 mx-2 rounded-md"
+            onChange={(e) => {
+              setFilterParam(e.target.value);
+               }}
+          >
+            <option value='All'>All</option>
+            <option value='Alive'>Alive</option>
+            <option value="Dead">Dead</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </div>
+      </div>
       <div className="flex items-center justify-center  w-[100%]">
         {!todos ? (
           ///LOADER
@@ -59,13 +117,13 @@ const Characters = () => {
               </svg>
               <span class="sr-only">Loading...</span>
             </div>
-            <h3 class='text-white font-semibold m-2'>Cargando..</h3>
+            <h3 class="text-white font-semibold m-2">Cargando..</h3>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-5 grid-flow-row gap-2 gap-x-2 mx-2 my-8 text-center">
-            {todos.map((character) => (
-               <Card character={character}></Card> 
-               ))}
+            {search(todos).map((character) => (
+              <Card character={character}></Card>
+            ))}
           </div>
         )}
       </div>

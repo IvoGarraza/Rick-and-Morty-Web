@@ -18,7 +18,7 @@ const Home = () => {
             className="bg-gradient-to-b sm:w-1/3 w-full h-44 justify-around flex flex-col bg-[#2b9cab] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-black"
           >
             <span className="drop-shadow-md shadow-black text-2xl text-white">
-              Personajes
+              Characters
             </span>
             <span>
               Explora el Multiverso de Personajes: ¿Quién será tu favorito en
@@ -30,7 +30,7 @@ const Home = () => {
             className="bg-gradient-to-b sm:w-1/3 w-full h-44 justify-around flex flex-col bg-[#2b9cab] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-black"
           >
             <span className="drop-shadow-md shadow-black text-2xl text-white">
-              Ubicaciones
+              Locations
             </span>
             <span>
               De planetas locos a realidades alternativas, explora las
@@ -42,7 +42,7 @@ const Home = () => {
             className="bg-gradient-to-b sm:w-1/3 w-full h-44 justify-around flex flex-col bg-[#2b9cab] m-2 w-100 h-100 p-2 hover:shadow-none shadow-sm shadow-black rounded-xl border-[2px] border-black"
           >
             <span className="drop-shadow-md shadow-black text-2xl text-white">
-              Episodios
+              Episodes
             </span>
             <span>
               Explora los Episodios llenos de absurdidad y ciencia ficción
