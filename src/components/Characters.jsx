@@ -6,7 +6,7 @@ import Card2 from "./Cards/Card2";
 
 const Characters = () => {
   const [todos, setTodos] = useState();
-  const data = useState([])
+  const [data, setData] = useState([]);
   //establece el parámetro de búsqueda a una cadena de texto vacía.
   const [q, setQ] = useState("");
   //     set search parameters establece parámetros de búsqueda
@@ -16,21 +16,26 @@ const Characters = () => {
   // 	  solo tienes que agregarlo al arreglo.
   const [searchParam] = useState(["name"]);
   const [filterParam, setFilterParam] = useState(["All"]);
+  const [genderFilter, setGenderFilter] = useState(["All"])
 
   const infoApi = async () => {
     try {
       const info = await axios.get("https://rickandmortyapi.com/api/character");
       /*      data.push(...info.data.results); */
       const pages = await info.data.info.pages;
+      let allResults = [];
       for (var i = 1; pages >= i; i++) {
         var info2 = await axios.get(
           `https://rickandmortyapi.com/api/character?page=${i}`
         );
-        data.push(...info2.data.results);
+        console.log("primerconsoleloggg", info2.data.results);
+        allResults = [...allResults, ...info2.data.results];
+        /* data.push(...info2.data.results); */
         /* setData(info2.data.results) */
-        console.log(data, 'itineracion',i);
+        console.log(allResults, "itineracion", i);
       }
-      console.log(data, 'fin de funcion');
+      console.log(data, "fin de funcion");
+      setData(allResults);
       setTodos(data);
     } catch (error) {
       console.log(error);
@@ -44,18 +49,34 @@ const Characters = () => {
   }, []);
 
   function search(items) {
+    /* return items.filter((item) => {
+      return searchParam.some((newItem) => {
+        return (
+          item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
+        );
+      });
+    }); */
     return items.filter((item) => {
+      /*
+    // aquí vamos a chequear si nuestra región es igual a nuestro estado c
+    // si es igual, entonces deberá retornar solo los elementos que cumplan con el criterio de búsqueda
+    // caso contrario, deberá retornar todos los países.
+    */
+      if (item.status == filterParam) {
         return searchParam.some((newItem) => {
-            return (
-                item[newItem]
-                    .toString()
-                    .toLowerCase()
-                    .indexOf(q.toLowerCase()) > -1
-            );
+          return (
+            item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
+          );
         });
+      } else if (filterParam == "All") {
+        return searchParam.some((newItem) => {
+          return (
+            item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
+          );
+        });
+      }
     });
-}
-
+  }
 
   console.log(todos);
   return (
@@ -85,11 +106,26 @@ const Characters = () => {
             className="p-2 mx-2 rounded-md"
             onChange={(e) => {
               setFilterParam(e.target.value);
-               }}
+            }}
           >
-            <option value='All'>All</option>
-            <option value='Alive'>Alive</option>
+            <option value="All">All</option>
+            <option value="Alive">Alive</option>
             <option value="Dead">Dead</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </div>
+        <div className="">
+          <span className="text-white">Gender:</span>
+          <select
+            className="p-2 mx-2 rounded-md"
+            onChange={(e) => {
+              setGenderFilter(e.target.value);
+            }}
+          >
+            <option value="All">All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Genderless">Genderless</option>
             <option value="unknown">Unknown</option>
           </select>
         </div>
@@ -121,7 +157,7 @@ const Characters = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-5 grid-flow-row gap-2 gap-x-2 mx-2 my-8 text-center">
-            {search(todos).map((character) => (
+            {search(data).map((character) => (
               <Card character={character}></Card>
             ))}
           </div>

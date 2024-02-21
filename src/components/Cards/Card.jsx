@@ -46,17 +46,17 @@ const Card = ({ character }) => {
         <div className="rounded-b  flex flex-col items-center mb-2">
           <div className="flex flex-row items-center justify-around w-full">
             <div className="flex flex-col">
-              <span>Especie: </span>
+              <span>Species: </span>
               <h4 className="mx-2 text-slate-200">{character.species}</h4>
             </div>
             <div className="flex flex-col">
-              <span>Genero: </span>
+              <span>Gender: </span>
               <h4 className={`${colorGender(character.gender)} mx-2`}>
                 {character.gender}
               </h4>
             </div>
             <div className="flex flex-col">
-              <span>Estado:</span>
+              <span>State:</span>
               <p className={`mx-2 ${colorState(character.status)}`}>
                 {character.status}
               </p>
@@ -74,7 +74,7 @@ const Card = ({ character }) => {
             <Link to={`/characters/${character.id}`}>Ver detalle</Link>
           </div> */}
           <Link to={`/characters/${character.id}`}>
-            <button class="shadow__btn mt-2">Ver detalle</button>
+            <button class="shadow__btn mt-2">Details</button>
           </Link>
         </div>
       </div>
